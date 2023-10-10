@@ -19,7 +19,7 @@ GREEN = (0, 255, 0)
 # Snake initial position and direction
 snake_head = [GRID_WIDTH // 2, GRID_HEIGHT // 2]
 snake_body = [snake_head]
-snake_direction = [0, 0]  # [dx, dy]
+snake_direction = [0, -1]  # Start by moving upward
 
 # Food initial position
 food_position = [random.randint(0, GRID_WIDTH - 1), random.randint(0, GRID_HEIGHT - 1)]
@@ -35,13 +35,13 @@ while True:
             pygame.quit()
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_UP and snake_direction != [0, 1]:
                 snake_direction = [0, -1]
-            elif event.key == pygame.K_DOWN:
+            elif event.key == pygame.K_DOWN and snake_direction != [0, -1]:
                 snake_direction = [0, 1]
-            elif event.key == pygame.K_LEFT:
+            elif event.key == pygame.K_LEFT and snake_direction != [1, 0]:
                 snake_direction = [-1, 0]
-            elif event.key == pygame.K_RIGHT:
+            elif event.key == pygame.K_RIGHT and snake_direction != [-1, 0]:
                 snake_direction = [1, 0]
 
     # Move the snake
